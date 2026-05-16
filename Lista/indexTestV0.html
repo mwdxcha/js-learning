@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <h1>Lista</h1>
+
+
+    <input id="Texto"  type="text">
+    <button onclick="add()">Adicionar</button>
+
+    <ul id="lista"></ul>
+
+    <script>
+        // Obter referências aos elementos do DOM
+        const input = document.getElementById("Texto")
+        const lista = document.getElementById("lista")
+        
+        
+        // Adicionar item à lista quando a tecla Enter for pressionada
+        input.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    add();
+                }
+            });
+        // Função para adicionar um item à lista
+        function add(){   
+        if (input.value === ""){
+            alert("digite algo");
+            return;
+        }
+        
+      
+        // Criar um novo elemento de lista (li)
+        const li = document.createElement("li")
+
+        // Definir o conteúdo do elemento de lista para o valor do input e adicionar um botão de remoção
+        li.innerHTML = `
+        ${input.value}
+        <button onclick="this.parentElement.remove()">
+          Remover
+        </button>
+      `;
+
+        // Adicionar o elemento de lista à lista (ul)
+        lista.appendChild(li);
+        input.value = "";
+        }
+
+
+    </script>
+</body>
+</html>
